@@ -5,6 +5,7 @@ import traceback
 import xbmc
 
 from .constants import LOG_PREFIX
+from .settings import get_bool
 
 
 def _log(message, level=xbmc.LOGINFO):
@@ -12,6 +13,9 @@ def _log(message, level=xbmc.LOGINFO):
 
 
 def debug(message):
+    if not get_bool("debug_logging", default=False):
+        return
+
     _log(message, xbmc.LOGDEBUG)
 
 

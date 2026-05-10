@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="1">
+
+    <section id="general" label="General">
+
+        <category id="logging" label="Logging">
+
+            <group id="debug_group" label="Debug">
+
+                <setting
+                    id="debug_logging"
+                    type="boolean"
+                    label="Enable debug logging"
+                    default="false" />
+
+            </group>
+
+        </category>
+
+    </section>
+
+</settings>

@@ -21,6 +21,7 @@ def main():
         time_ms=3000,
     )
 
+    debug("This is a debug message")
 
 if __name__ == "__main__":
     main()
