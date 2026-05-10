@@ -5,11 +5,10 @@
             <group id="debug_group" label="Debug">
                 <setting id="debug_logging"
                          type="boolean"
-                         label="Enable debug logging"
-                         default="false">
+                         label="Enable debug logging">
+                    <default>false</default>
                     <control type="toggle"/>
                 </setting>
-                
             </group>
         </category>
     </section>
