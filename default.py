@@ -11,7 +11,7 @@ def main():
     show_notification(
         "MDM Core",
         "MDM Core initialized successfully",
-        duration=3000,
+        time_ms=3000,
     )
 
     info("Network test: {}".format(test_url("https://mdmainsley.github.io/repository.mdm.repo/")))
