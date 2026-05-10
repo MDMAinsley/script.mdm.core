@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from resources.lib.mdmcore.logger import info
-from resources.lib.mdmcore.kodi import show_notification
+from resources.lib.mdmcore.paths import ensure_core_directories
 
 
 def main():
-    info("MDM Core script launched")
 
-    show_notification(
-        "MDM Core",
-        "Kodi wrapper test successful"
-    )
+    ensure_core_directories()
+
+    info("MDM Core directories ensured")
 
 
 if __name__ == "__main__":
