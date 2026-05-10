@@ -1,0 +1,17 @@
+# Kodi strings for MDM Core
+
+msgctxt "#30000"
+msgid "General"
+msgstr ""
+
+msgctxt "#30001"
+msgid "Logging"
+msgstr ""
+
+msgctxt "#30002"
+msgid "Debug"
+msgstr ""
+
+msgctxt "#30003"
+msgid "Enable debug logging"
+msgstr ""
