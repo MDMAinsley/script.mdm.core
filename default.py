@@ -3,7 +3,7 @@
 import os
 
 from resources.lib.mdmcore.bootstrap import initialise_core
-from resources.lib.mdmcore.logger import info
+from resources.lib.mdmcore.logger import info, debug
 from resources.lib.mdmcore.kodi import show_notification, get_addon_path
 
 
