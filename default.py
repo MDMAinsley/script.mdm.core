@@ -9,7 +9,7 @@ def main():
 
     info("Settings test value: {}".format(get_string("missing_setting", default="fallback")))
 
-    info("Loaded JSON: {}".format(loaded))
+    info("MDM Core loaded successfully!")
 
 
 if __name__ == "__main__":
