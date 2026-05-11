@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import time
-
+from .timeutils import now_ts, has_expired
 from .constants import DEFAULT_CACHE_TTL
 from .files import read_json, write_json, delete_file
 from .paths import get_cache_path
@@ -14,7 +13,7 @@ def _cache_file(key):
 
 def set_cache(key, data, ttl=DEFAULT_CACHE_TTL):
     payload = {
-        "created": int(time.time()),
+        "created": now_ts(),
         "ttl": int(ttl),
         "data": data
     }
@@ -31,7 +30,7 @@ def get_cache(key, default=None):
     created = payload.get("created", 0)
     ttl = payload.get("ttl", DEFAULT_CACHE_TTL)
 
-    if int(time.time()) > created + ttl:
+    if has_expired(created, ttl):
         delete_cache(key)
         return default
 
