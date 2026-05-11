@@ -6,8 +6,6 @@ from resources.lib.mdmcore.bootstrap import initialise_core
 from resources.lib.mdmcore.logger import info
 from resources.lib.mdmcore.kodi import show_notification, get_addon_path
 
-from resources.lib.mdmcore.jsonrpc import get_application_properties
-
 
 def main():
     initialise_core()
@@ -22,8 +20,6 @@ def main():
         icon=icon_path,
         time_ms=3000,
     )
-
-    info("JSON-RPC test: {}".format(get_application_properties()))
     
 
 if __name__ == "__main__":
