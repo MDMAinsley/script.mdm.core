@@ -2,7 +2,7 @@
 
 from .bootstrap import initialise_core
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "MDMAinsley"
 __package_name__ = "mdmcore"
 
