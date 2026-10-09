@@ -27,3 +27,11 @@ msgstr ""
 msgctxt "#30003"
 msgid "Enable debug logging"
 msgstr ""
+
+msgctxt "#30004"
+msgid "MDM Core initialized successfully"
+msgstr ""
+
+msgctxt "#30005"
+msgid "MDM Core initialization failed. Check the Kodi log."
+msgstr ""

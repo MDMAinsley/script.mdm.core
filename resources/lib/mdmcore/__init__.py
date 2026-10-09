@@ -14,7 +14,9 @@ from . import monitor
 from . import integrations
 from . import timeutils
 
-__version__ = "0.1.2"
+from .constants import CORE_VERSION
+
+__version__ = CORE_VERSION
 __author__ = "MDMAinsley"
 __package_name__ = "mdmcore"
 

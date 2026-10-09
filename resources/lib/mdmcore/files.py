@@ -2,6 +2,7 @@
 
 import json
 import os
+import tempfile
 
 from .constants import TEXT_ENCODING
 from .logger import exception
@@ -38,16 +39,36 @@ def write_text(file_path, content):
     """
 
     try:
-        ensure_parent_directory(file_path)
-
-        with open(file_path, "w", encoding=TEXT_ENCODING) as file:
-            file.write(content)
+        _write_atomic(file_path, content.encode(TEXT_ENCODING))
 
         return True
 
     except Exception:
         exception("Failed to write text file: {}".format(file_path))
         return False
+
+
+def _write_atomic(file_path, content):
+    """Replace a local file only after the complete encoded content is written."""
+    destination = os.path.abspath(file_path)
+    ensure_parent_directory(destination)
+    temporary = None
+    try:
+        descriptor, temporary = tempfile.mkstemp(
+            prefix=".mdm-write-", dir=os.path.dirname(destination)
+        )
+        with os.fdopen(descriptor, "wb") as file:
+            file.write(content)
+            file.flush()
+            os.fsync(file.fileno())
+        os.replace(temporary, destination)
+        temporary = None
+    finally:
+        if temporary is not None:
+            try:
+                os.remove(temporary)
+            except OSError:
+                exception("Failed to remove temporary write file")
 
 
 def read_json(file_path, default=None):
@@ -72,14 +93,8 @@ def write_json(file_path, data, pretty=True):
     """
 
     try:
-        ensure_parent_directory(file_path)
-
-        with open(file_path, "w", encoding=TEXT_ENCODING) as file:
-
-            if pretty:
-                json.dump(data, file, indent=4, ensure_ascii=False)
-            else:
-                json.dump(data, file, ensure_ascii=False)
+        content = json.dumps(data, indent=4 if pretty else None, ensure_ascii=False)
+        _write_atomic(file_path, content.encode(TEXT_ENCODING))
 
         return True
 

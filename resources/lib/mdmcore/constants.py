@@ -7,6 +7,7 @@ CONF_ADDON_ID = "script.mdm.conf"
 SKIN_ADDON_ID = "skin.mdm.skin"
 
 CORE_ADDON_NAME = "MDM Core"
+CORE_VERSION = "1.0.0"
 
 LOG_PREFIX = "[MDM Core]"
 

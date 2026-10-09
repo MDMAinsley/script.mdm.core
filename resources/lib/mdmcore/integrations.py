@@ -34,7 +34,8 @@ def get_addon_version(addon_id):
 
 def execute_addon(addon_id):
     """
-    Launch another addon safely.
+    Dispatch RunAddon for an addon ID. True means dispatch did not raise;
+    it does not confirm the addon exists, starts successfully or completes.
     """
 
     try:

@@ -10,6 +10,9 @@ def get_platform():
     Return simplified platform name.
     """
 
+    if is_android():
+        return "android"
+
     system = platform.system().lower()
 
     if "windows" in system:

@@ -2,6 +2,8 @@
 
 import os
 
+from .exceptions import MDMPathError
+
 from .kodi import (
     get_profile_path,
     make_dirs,
@@ -22,8 +24,15 @@ def ensure_directory(path):
     Create directory if it does not exist.
     """
 
-    if not path_exists(path):
-        make_dirs(path)
+    try:
+        if not path_exists(path):
+            make_dirs(path)
+        if not os.path.isdir(path):
+            raise MDMPathError("Directory is unavailable: {}".format(path))
+    except MDMPathError:
+        raise
+    except Exception as error:
+        raise MDMPathError("Could not create directory: {}".format(path)) from error
 
     return path
 

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from .logger import info
+from .logger import info, exception
+from .exceptions import MDMPathError
 from .paths import ensure_core_directories
 from .device import (
     get_platform,
@@ -16,7 +17,11 @@ def initialise_core(log_device_info=True):
     Keep this lightweight.
     """
 
-    ensure_core_directories()
+    try:
+        ensure_core_directories()
+    except MDMPathError:
+        exception("MDM Core initialisation failed: profile directories unavailable")
+        return False
 
     info("MDM Core initialised")
 

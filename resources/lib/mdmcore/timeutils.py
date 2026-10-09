@@ -26,7 +26,10 @@ def has_expired(created_ts, ttl_seconds):
     """
 
     try:
-        return now_ts() > int(created_ts) + int(ttl_seconds)
+        created = int(created_ts)
+        ttl = int(ttl_seconds)
+        current = now_ts()
+        return ttl <= 0 or created < 0 or created > current or current >= created + ttl
     except Exception:
         return True
 
